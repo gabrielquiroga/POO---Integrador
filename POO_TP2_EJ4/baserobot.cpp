@@ -41,21 +41,21 @@ string baserobot::iniciar(int accion, int ciclos, float velocidad) {
     this->set_peso(100);
         
     if(accion == PINTAR) {
-        herramienta->pintar();
+        herramienta.pintar();
     }else if(accion == SOSTENER) {
-        herramienta->sostener();
+        herramienta.sostener();
     }else if(accion == SOLTAR) {
-        herramienta->soltar();
+        herramienta.soltar();
     }else if(accion == ROTAR) {
-        herramienta->rotar();
+        herramienta.rotar();
     }else if(accion == CAMBIAR_VELOCIDAD) {
-        herramienta->set_velocidad(velocidad);
+        herramienta.set_velocidad(velocidad);
     }
     if (accion != CAMBIAR_VELOCIDAD) {
-        herramienta->set_ciclos_prefijados(ciclos);
+        herramienta.set_ciclos_prefijados(ciclos);
     }
-    equipo->set_peso(this->get_peso() + herramienta->get_peso());
-    herramienta->set_velocidad(velocidad);
+    equipo.set_peso(this->get_peso() + herramienta.get_peso());
+    herramienta.set_velocidad(velocidad);
     
     
     
@@ -65,11 +65,11 @@ string baserobot::iniciar(int accion, int ciclos, float velocidad) {
 string baserobot::toString() {
     stringstream ss;
     ss << "Estado: " << this->get_estado() << endl 
-            << "Actividad en progreso: " << herramienta->get_actividad() << endl
-            << "Número de ciclos: " << herramienta->get_ciclo_actual() << endl
-            << "Ciclos prefijados: " << herramienta->get_ciclos_prefijados() << endl
-            << "Velocidad de giro: " << herramienta->get_velocidad_giro() << endl
-            << "Peso del conjunto: " << equipo->get_peso() << endl;
+            << "Actividad en progreso: " << herramienta.get_actividad() << endl
+            << "Número de ciclos: " << herramienta.get_ciclo_actual() << endl
+            << "Ciclos prefijados: " << herramienta.get_ciclos_prefijados() << endl
+            << "Velocidad de giro: " << herramienta.get_velocidad_giro() << endl
+            << "Peso del conjunto: " << equipo.get_peso() << endl;
     return ss.str();
 }
 

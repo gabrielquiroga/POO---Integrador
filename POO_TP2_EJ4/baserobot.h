@@ -25,8 +25,8 @@ using namespace std;
 
 
 class baserobot : public Conjunto {
-    efector_final *herramienta;
-    Conjunto *equipo;
+    efector_final herramienta;
+    Conjunto equipo;
 
 public:
     string get_estado();
