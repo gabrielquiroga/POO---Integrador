@@ -22,9 +22,9 @@ Articulacion::Articulacion(const Articulacion& orig) {
 Articulacion::~Articulacion() {
 }
 
-void Articulacion::mover() {
-    float pos[3];
-    pos[3] = this->coordenadas[3];
-       
+void Articulacion::mover(float movimiento, float vel) {
+    this->velocidad_mov = vel;
+    
+    
 }
 

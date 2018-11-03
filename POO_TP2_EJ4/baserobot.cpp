@@ -36,7 +36,7 @@ void BaseRobot::set_IP(string nueva_IP) {
     this->IP = nueva_IP;
 }
 
-string BaseRobot::iniciar(int accion, int ciclos, float velocidad) {
+string BaseRobot::iniciar_actividad(int accion, int ciclos, float velocidad) {
     this->set_estado("Activo");
     this->set_peso(100);
     string aux;
@@ -58,12 +58,9 @@ string BaseRobot::iniciar(int accion, int ciclos, float velocidad) {
     equipo.set_peso(this->get_peso() + herramienta.get_peso());
     herramienta.set_velocidad(velocidad);
     
-    aux = this->toString();  
-    
-    
+    aux = this->toString();     
     return aux;
 }
-
 string BaseRobot::toString() {
 
     string aux="INFORME DEL CONJUNTO\nEstado: ";   
@@ -89,3 +86,23 @@ string BaseRobot::toString() {
     return aux;
 }
 
+string BaseRobot::iniciar_movimiento(int tipo_vinc, int direccion, float cantidad, float vel_mov) {
+    if (direccion == 2) {
+        cantidad = -cantidad;
+    }
+    if (tipo_vinc == 1) {
+        vinculo[tipo_vinc].set_tipoPieza("Vínculo de rotación xy");
+        
+    }
+    else if (tipo_vinc == 1) {
+        vinculo[tipo_vinc].set_tipoPieza("Vínculo de rotación xy");
+        
+    }
+    else if (tipo_vinc == 3) {
+        vinculo[tipo_vinc].set_tipoPieza("Vínculo de desplazamiento y");
+        
+    }
+    
+    
+    return 0;
+}

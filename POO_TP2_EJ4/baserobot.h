@@ -15,6 +15,7 @@
 #define BASEROBOT_H
 #include "conjunto.h"
 #include "efectorfinal.h"
+#include "articulacion.h"
 
 
 #include <iostream>
@@ -27,14 +28,16 @@ using namespace std;
 class BaseRobot : public Conjunto {
     EfectorFinal herramienta;
     Conjunto equipo;
+    Articulacion vinculo[3];
 
 public:
     string get_estado();
     void set_estado(string nuevo_estado);
     string get_IP();
     void set_IP(string nueva_IP);
-    string iniciar(int accion, int ciclos, float velocidad);
+    string iniciar_actividad(int accion, int ciclos, float velocidad);
     string toString();
+    string iniciar_movimiento(int tipo_vinc, int direccion, float cantidad, float vel_mov);
 
 private:
     string estado;

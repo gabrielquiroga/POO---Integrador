@@ -21,9 +21,10 @@ public:
     Articulacion();
     Articulacion(const Articulacion& orig);
     virtual ~Articulacion();
-    void mover();
+    void mover(float movimiento, float vel);
 private:
     float coordenadas[3];
+    float velocidad_mov;
     float cotas_pos_x[2];
     float cotas_pos_y[2];
     float cotas_pos_z[2];
