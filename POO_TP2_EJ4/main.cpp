@@ -17,8 +17,8 @@ using namespace std;
 #include <sstream>
 
 
-#include "efector_final.h"
-#include "Conjunto.h"
+#include "efectorfinal.h"
+#include "conjunto.h"
 #include "baserobot.h"
 
 /*
@@ -26,13 +26,14 @@ using namespace std;
  */
 int main() {
 
-    baserobot *base;
-    base = new baserobot;
+    BaseRobot *base;
+    base = new BaseRobot;
 
     
     char respuesta;
-    int accion, ciclos, n;
+    int accion, ciclos, n=0, i;
     float velocidad;
+    string informe, proceso[5];
     
     cout << "Desea iniciar el equipo? y/n" << endl;
     cin >> respuesta;
@@ -47,18 +48,31 @@ int main() {
                     << "5. Cambiar velocidad" << endl
                     << "0. Iniciar el programa" << endl;
             cin >> accion;
-            cout << "Ingrese número de ciclos" << endl;
-            cin >> ciclos;
-            cout << "Ingrese velocidad de giro" << endl;
-            cin >> velocidad;
-            base->iniciar(accion, ciclos, velocidad);
+            if (accion != 0 ) {
+                if (accion != 5) {
+                cout << "Ingrese número de ciclos" << endl;
+                cin >> ciclos;
+                }
+                cout << "Ingrese velocidad de giro" << endl;
+                cin >> velocidad;
+            }
+            informe = base->iniciar(accion, ciclos, velocidad);
+            proceso[n] = informe;
 
         }
-
         else {
             base->set_estado("Inactivo");
             cout << "Estado de la base: " << base->get_estado() << endl;
         }
+        
+        cout << "Desea agregar otra actividad? y/n" << endl;
+        cin >> respuesta;
+        if (respuesta == 'n') {
+            accion = 0;
+        }
+    }
+    for (i=0; i<=n; i++) {
+        cout << proceso[i];
     }
     
     return 0;

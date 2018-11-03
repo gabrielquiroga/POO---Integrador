@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux
-CND_DLIB_EXT=so
+CND_PLATFORM=Cygwin-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,9 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Articulacion.o \
+	${OBJECTDIR}/BaseRobot.o \
 	${OBJECTDIR}/Conjunto.o \
-	${OBJECTDIR}/baserobot.o \
-	${OBJECTDIR}/efector_final.o \
+	${OBJECTDIR}/EfectorFinal.o \
+	${OBJECTDIR}/Eslabon.o \
 	${OBJECTDIR}/main.o
 
 
@@ -59,26 +61,36 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/poo_tp2_ej4
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/poo_tp2_ej4.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/poo_tp2_ej4: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/poo_tp2_ej4.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/poo_tp2_ej4 ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Articulacion.o: Articulacion.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Articulacion.o Articulacion.cpp
+
+${OBJECTDIR}/BaseRobot.o: BaseRobot.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/BaseRobot.o BaseRobot.cpp
 
 ${OBJECTDIR}/Conjunto.o: Conjunto.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Conjunto.o Conjunto.cpp
 
-${OBJECTDIR}/baserobot.o: baserobot.cpp
+${OBJECTDIR}/EfectorFinal.o: EfectorFinal.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/baserobot.o baserobot.cpp
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EfectorFinal.o EfectorFinal.cpp
 
-${OBJECTDIR}/efector_final.o: efector_final.cpp
+${OBJECTDIR}/Eslabon.o: Eslabon.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/efector_final.o efector_final.cpp
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Eslabon.o Eslabon.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

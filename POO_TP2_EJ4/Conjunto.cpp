@@ -11,7 +11,7 @@
  * Created on 30 de septiembre de 2018, 20:46
  */
 
-#include "Conjunto.h"
+#include "conjunto.h"
 
 #include <iostream>
 using namespace std;

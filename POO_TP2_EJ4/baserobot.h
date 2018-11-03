@@ -13,8 +13,8 @@
 
 #ifndef BASEROBOT_H
 #define BASEROBOT_H
-#include "Conjunto.h"
-#include "efector_final.h"
+#include "conjunto.h"
+#include "efectorfinal.h"
 
 
 #include <iostream>
@@ -24,8 +24,8 @@ using namespace std;
 
 
 
-class baserobot : public Conjunto {
-    efector_final herramienta;
+class BaseRobot : public Conjunto {
+    EfectorFinal herramienta;
     Conjunto equipo;
 
 public:

@@ -11,7 +11,7 @@
  * Created on 8 de octubre de 2018, 09:57
  */
 
-#include "efector_final.h"
+#include "efectorfinal.h"
 
 
 #include <iostream>
@@ -19,64 +19,64 @@ using namespace std;
 #include <string>
 
 
-void efector_final::pintar() {
+void EfectorFinal::pintar() {
     this->set_peso(20);
     this->actividad = "Pintar";
 }
 
-void efector_final::sostener() {
+void EfectorFinal::sostener() {
     this->set_peso(15);
     this->actividad = "Sostener";
 }
 
-void efector_final::soltar() {
+void EfectorFinal::soltar() {
     this->set_peso(10);
     this->actividad = "Soltar";
 }
 
-void efector_final::rotar() {
+void EfectorFinal::rotar() {
     this->set_peso(30);
     this->actividad = "Rotar";
 }
 
-void efector_final::set_velocidad(float nueva_velocidad) {
+void EfectorFinal::cambiar_velocidad(float nueva_velocidad) {
     this->set_peso(5);
     this->actividad = "Cambiar Velocidad";
     velocidad_giro = nueva_velocidad;
 }
 
+void EfectorFinal::set_velocidad(float nueva_velocidad) {
+    velocidad_giro = nueva_velocidad;
+}
+
 
 //Bloque para obtener los datos
-int efector_final::get_estado() {
+int EfectorFinal::get_estado() {
     return this->estado;
 }
-string efector_final::get_actividad() {
+string EfectorFinal::get_actividad() {
     return this->actividad;
 }
-int efector_final::get_ciclo_actual() {
+int EfectorFinal::get_ciclo_actual() {
     return this->ciclo_actual;
 }
-int efector_final::get_ciclos_prefijados() {
+int EfectorFinal::get_ciclos_prefijados() {
     return this->ciclos_prefijados;
 }
-float efector_final::get_velocidad_giro() {
+float EfectorFinal::get_velocidad_giro() {
     return this->velocidad_giro;
 }
 
 
-void efector_final::cambiar_estado(bool nuevo_estado) {
+void EfectorFinal::set_estado(bool nuevo_estado) {
     this->estado = nuevo_estado;
 }
-
-
-void efector_final::set_ciclos_prefijados(int ciclos) {
+void EfectorFinal::set_ciclos_prefijados(int ciclos) {
     this->ciclos_prefijados = ciclos;
 }
-
-void efector_final::aumentar_ciclo() {
+void EfectorFinal::aumentar_ciclo() {
     this->ciclo_actual = ciclo_actual + 1;
 }
-
-void efector_final::set_ciclo_actual(int nuevo_ciclo_actual) {
+void EfectorFinal::set_ciclo_actual(int nuevo_ciclo_actual) {
     this->ciclo_actual = nuevo_ciclo_actual;
 }

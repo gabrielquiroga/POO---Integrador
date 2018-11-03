@@ -12,8 +12,8 @@
  */
 
 #include "baserobot.h"
-#include "efector_final.h"
-#include "Conjunto.h"
+#include "efectorfinal.h"
+#include "conjunto.h"
 
 #include <iostream>
 using namespace std;
@@ -22,23 +22,24 @@ using namespace std;
 
 
 
-string baserobot::get_estado() {
+string BaseRobot::get_estado() {
     return this->estado;
 }
-void baserobot::set_estado(string nuevo_estado) {
+void BaseRobot::set_estado(string nuevo_estado) {
     this->estado = nuevo_estado;
 }
 
-string baserobot::get_IP() {
+string BaseRobot::get_IP() {
     return this->IP;
 }
-void baserobot::set_IP(string nueva_IP) {
+void BaseRobot::set_IP(string nueva_IP) {
     this->IP = nueva_IP;
 }
 
-string baserobot::iniciar(int accion, int ciclos, float velocidad) {
+string BaseRobot::iniciar(int accion, int ciclos, float velocidad) {
     this->set_estado("Activo");
     this->set_peso(100);
+    string aux;
         
     if(accion == PINTAR) {
         herramienta.pintar();
@@ -57,19 +58,34 @@ string baserobot::iniciar(int accion, int ciclos, float velocidad) {
     equipo.set_peso(this->get_peso() + herramienta.get_peso());
     herramienta.set_velocidad(velocidad);
     
+    aux = this->toString();  
     
     
-    return 0;
+    return aux;
 }
 
-string baserobot::toString() {
-    stringstream ss;
-    ss << "Estado: " << this->get_estado() << endl 
-            << "Actividad en progreso: " << herramienta.get_actividad() << endl
-            << "Número de ciclos: " << herramienta.get_ciclo_actual() << endl
-            << "Ciclos prefijados: " << herramienta.get_ciclos_prefijados() << endl
-            << "Velocidad de giro: " << herramienta.get_velocidad_giro() << endl
-            << "Peso del conjunto: " << equipo.get_peso() << endl;
-    return ss.str();
+string BaseRobot::toString() {
+
+    string aux="INFORME DEL CONJUNTO\nEstado: ";   
+    stringstream ss1, ss2, ss3, ss4, ss5, ss6;
+    ss1 << this->get_estado();
+    aux += ss1.str();
+    aux += string("\nActividad en progreso: ");
+    ss2 << herramienta.get_actividad();
+    aux += ss2.str();
+    aux += string("\nCiclos realizados: ");
+    ss3 << herramienta.get_ciclo_actual();
+    aux += ss3.str();
+    aux += string("\nCiclos prefijados: ");
+    ss4 << herramienta.get_ciclos_prefijados();
+    aux += ss4.str();
+    aux += string("\nVelocidad de giro: ");
+    ss5 << herramienta.get_velocidad_giro();
+    aux += ss5.str();
+    aux += string("\nPeso del conjunto: ");
+    ss6 << equipo.get_peso();
+    aux += ss6.str();
+    aux += string("\n");
+    return aux;
 }
 
