@@ -38,6 +38,7 @@ public:
     string iniciar_actividad(int accion, int ciclos, float velocidad);
     string toString();
     string iniciar_movimiento(int tipo_vinc, int direccion, float cantidad, float vel_mov);
+    string toString2(int tipo_vinc);
 
 private:
     string estado;

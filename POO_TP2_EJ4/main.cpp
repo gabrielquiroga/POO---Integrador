@@ -30,8 +30,8 @@ int main() {
     base = new BaseRobot;
 
     
-    char respuesta, ans;
-    int accion, ciclos, n=0, i, tipo_vinc, direccion;
+    char respuesta;
+    int accion, ciclos, n=0, i, tipo_vinc, direccion, ans;
     float velocidad, cantidad, vel_mov;
     string informe[10];
     
@@ -87,10 +87,12 @@ int main() {
             cout << "Estado de la base: " << base->get_estado() << endl;
         }
         
-        cout << "Desea agregar otro ciclo? y/n" << endl;
-        cin >> respuesta;
-        if (respuesta == 'n') {
-            accion = 0;
+        if (accion != 0) {
+            cout << "Desea agregar otro ciclo? y/n" << endl;
+            cin >> respuesta;
+            if (respuesta == 'n') {
+                accion = 0;
+            }
         }
     }
     for (i=0; i<=n; i++) {

@@ -27,6 +27,11 @@ string BaseRobot::get_estado() {
 }
 void BaseRobot::set_estado(string nuevo_estado) {
     this->estado = nuevo_estado;
+    if (this->estado == "Activo") {
+        for (int i=1; i<=3; i++) {
+            vinculo[i].set_posicion_relativa(0);
+        }
+    }
 }
 
 string BaseRobot::get_IP() {
@@ -87,22 +92,39 @@ string BaseRobot::toString() {
 }
 
 string BaseRobot::iniciar_movimiento(int tipo_vinc, int direccion, float cantidad, float vel_mov) {
+    string aux;
     if (direccion == 2) {
         cantidad = -cantidad;
     }
     if (tipo_vinc == 1) {
         vinculo[tipo_vinc].set_tipoPieza("Vínculo de rotación xy");
-        
     }
     else if (tipo_vinc == 1) {
         vinculo[tipo_vinc].set_tipoPieza("Vínculo de rotación xy");
-        
     }
     else if (tipo_vinc == 3) {
         vinculo[tipo_vinc].set_tipoPieza("Vínculo de desplazamiento y");
-        
     }
+    vinculo[tipo_vinc].mover(cantidad, vel_mov, tipo_vinc);
+
+    aux = this->toString2(tipo_vinc);
+    return aux;
+}
+string BaseRobot::toString2(int tipo_vinc) {
     
-    
-    return 0;
+    string aux="INFORME DEL CONJUNTO\nEstado: ";
+    stringstream ss1, ss2, ss3, ss4;
+    ss1 << this->get_estado();
+    aux += ss1.str();
+    aux += string("\nArticulacion: ");
+    ss2 << vinculo[tipo_vinc].get_tipoPieza();
+    aux += ss2.str();
+    aux += string("\nNueva posición: ");
+    ss3 << vinculo[tipo_vinc].get_posicion_relativa();
+    aux += ss3.str();
+    aux += string("\nVelocidad del movimiento: ");
+    ss4 << vinculo[tipo_vinc].get_velocidad_mov();
+    aux += ss4.str();
+    aux += string("\n");
+    return aux;
 }
