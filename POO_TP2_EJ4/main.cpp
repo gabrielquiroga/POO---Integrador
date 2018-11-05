@@ -15,6 +15,7 @@ using namespace std;
 #include <unistd.h>
 #include <string>
 #include <sstream>
+#include <list>
 
 
 #include "efectorfinal.h"
@@ -33,7 +34,9 @@ int main() {
     char respuesta;
     int accion, ciclos, n=0, i, tipo_vinc, direccion, ans;
     float velocidad, cantidad, vel_mov;
-    string informe[10];
+    //string informe[10];
+    list <string> informe;
+    list <string>::iterator iter;
     
     cout << "Desea iniciar el equipo? y/n" << endl;
     cin >> respuesta;
@@ -62,7 +65,7 @@ int main() {
                     cout << "Ingrese velocidad de giro" << endl;
                     cin >> velocidad;
                 }
-                informe[n] = base->iniciar_actividad(accion, ciclos, velocidad);
+                informe.insert(informe.end(), base->iniciar_actividad(accion, ciclos, velocidad));
             }
             else if (ans == 2) {
                 cout << "Ingrese el vinculo que desea mover:" << endl
@@ -79,7 +82,7 @@ int main() {
                 cout << "Ingrese la velocidad del movimiento" << endl;
                 cin >> vel_mov;
                 
-                informe[n] = base->iniciar_movimiento(tipo_vinc, direccion, cantidad, vel_mov);
+                informe.insert(informe.end(), base->iniciar_movimiento(tipo_vinc, direccion, cantidad, vel_mov));
             }
         }
         else {
@@ -95,10 +98,13 @@ int main() {
             }
         }
     }
-    for (i=0; i<=n; i++) {
+    /*for (i=0; i<=n; i++) {
         cout << informe[i];
+    }*/
+    for (iter = informe.begin(); iter != informe.end(); iter++) {
+        cout << informe.front() << endl;
+        informe.pop_front();
     }
-    
     return 0;
 }
 
