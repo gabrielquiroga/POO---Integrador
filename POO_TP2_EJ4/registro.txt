@@ -1,0 +1,2 @@
+Comandos ingresados, separados por un espacio:
+ y 1 2 2 2 n

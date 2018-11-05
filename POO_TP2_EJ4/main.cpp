@@ -12,11 +12,10 @@
  */
 #include <iostream>
 using namespace std;
-#include <unistd.h>
 #include <string>
-#include <sstream>
 #include <list>
-
+#include <fstream>
+#include <stdlib.h>
 
 #include "efectorfinal.h"
 #include "conjunto.h"
@@ -29,10 +28,15 @@ int main() {
 
     BaseRobot *base;
     base = new BaseRobot;
-
+    
+    fstream archivo("registro.txt");    
+    if(!archivo.is_open()) {
+        archivo.open("registro.txt", ios::out);
+    }
+    archivo << "Comandos ingresados, separados por un espacio:\n";
     
     char respuesta;
-    int accion, ciclos, n=0, i, tipo_vinc, direccion, ans;
+    int accion=1, ciclos, n=0, i, tipo_vinc, direccion, ans;
     float velocidad, cantidad, vel_mov;
     //string informe[10];
     list <string> informe;
@@ -40,6 +44,7 @@ int main() {
     
     cout << "Desea iniciar el equipo? y/n" << endl;
     cin >> respuesta;
+    archivo << " " << respuesta;
     while (accion != 0) {
         n++;
         if (respuesta == 'y') {
@@ -47,6 +52,7 @@ int main() {
                     << "1. Actividad"<< endl
                     << "2. Movimiento" << endl;
             cin >> ans;
+            archivo << " " << ans;
             
             if (ans == 1) {
                 cout << "Seleccione las actividades a realizar" << endl
@@ -57,13 +63,16 @@ int main() {
                         << "5. Cambiar velocidad" << endl
                         << "0. Iniciar el programa" << endl;
                 cin >> accion;
+                archivo << " " << accion;
                 if (accion != 0 ) {
                     if (accion != 5) {
                     cout << "Ingrese número de ciclos" << endl;
                     cin >> ciclos;
+                    archivo << " " << ciclos;
                     }
                     cout << "Ingrese velocidad de giro" << endl;
                     cin >> velocidad;
+                    archivo << " " << velocidad;
                 }
                 informe.insert(informe.end(), base->iniciar_actividad(accion, ciclos, velocidad));
             }
@@ -73,14 +82,18 @@ int main() {
                         << "2. Rotación en plano yz" << endl
                         << "3. Desplazamiento en eje y" << endl;
                 cin >> tipo_vinc;
+                archivo << " " << tipo_vinc;
                 cout << "Ingrese el sentido de movimiento: " << endl
                         << "1. Derecha u horario" << endl
                         << "2. Izquierda o antihorario" << endl;
                 cin >> direccion;
+                archivo << " " << direccion;
                 cout << "Ingrese la cantidad del movimiento, en milímetros o grados" << endl;
                 cin >> cantidad;
+                archivo << " " << cantidad;
                 cout << "Ingrese la velocidad del movimiento" << endl;
                 cin >> vel_mov;
+                archivo << " " << vel_mov;
                 
                 informe.insert(informe.end(), base->iniciar_movimiento(tipo_vinc, direccion, cantidad, vel_mov));
             }
@@ -93,6 +106,7 @@ int main() {
         if (accion != 0) {
             cout << "Desea agregar otro ciclo? y/n" << endl;
             cin >> respuesta;
+            archivo << " " << respuesta;
             if (respuesta == 'n') {
                 accion = 0;
             }
@@ -101,10 +115,12 @@ int main() {
     /*for (i=0; i<=n; i++) {
         cout << informe[i];
     }*/
-    for (iter = informe.begin(); iter != informe.end(); iter++) {
+    for (i=1;i<=n;i++) {
         cout << informe.front() << endl;
         informe.pop_front();
     }
+    
+    archivo.close();
     return 0;
 }
 
