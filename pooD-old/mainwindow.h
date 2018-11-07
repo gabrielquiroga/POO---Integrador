@@ -28,6 +28,9 @@ private slots:
 
     void on_horizontalSlider_3_sliderMoved(int position);
 
+    void on_radioButton_toggled(bool checked);
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

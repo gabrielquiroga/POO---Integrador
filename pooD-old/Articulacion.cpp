@@ -22,15 +22,15 @@ Articulacion::Articulacion(const Articulacion& orig) {
 Articulacion::~Articulacion() {
 }
 
-int Articulacion::mover(float posicion, float vel, int tipo_vinc) {
-   cota_vel=50;
+int Articulacion::mover(float posicion, int vel, int tipo_vinc) {
+    cota_vel=50;
     bool err=0;
     this->velocidad_mov = vel;
     this->posicion_relativa = posicion; //this->posicion_relativa + movimiento; /cambio esto para que el slider de directamente la posicion
     this->cota_pos[0] = 0;
-    if (tipo_vinc == 1 || tipo_vinc == 2) {
+    if (tipo_vinc == 0 || tipo_vinc == 1) {
         this->cota_pos[1] = 360;
-    } else if (tipo_vinc == 3) {
+    } else if (tipo_vinc == 2) {
         this->cota_pos[1] = 100;
     }
     //Esto supongo que lo debería hacer con excepciones
@@ -51,9 +51,9 @@ void Articulacion::set_posicion_relativa(float nueva_posicion) {
 float Articulacion::get_posicion_relativa() {
     return this->posicion_relativa;
 }
-void Articulacion::set_velocidad_mov(float nueva_velocidad) {
+void Articulacion::set_velocidad_mov(int nueva_velocidad) {
     this->velocidad_mov = nueva_velocidad;
 }
-float Articulacion::get_velocidad_mov() {
+int Articulacion::get_velocidad_mov() {
     return this->velocidad_mov;
 }

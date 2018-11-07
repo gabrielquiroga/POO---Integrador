@@ -21,15 +21,15 @@ public:
     Articulacion();
     Articulacion(const Articulacion& orig);
     virtual ~Articulacion();
-    int mover(float movimiento, float vel, int tipo_vinc);
+    int mover(float movimiento, int vel, int tipo_vinc);
     void set_posicion_relativa(float nueva_posicion); //posicion que va de 0 a 360 para los rotadores y de 0 a 100 para el desplazador
     float get_posicion_relativa();
-    void set_velocidad_mov(float nueva_velocidad);
-    float get_velocidad_mov();
+    void set_velocidad_mov(int nueva_velocidad);
+    int get_velocidad_mov();
 private:
     float posicion_relativa;
     float coordenadas[3];
-    float velocidad_mov;
+    int velocidad_mov;
     float cota_pos[2];
     float cota_vel = 50;
     

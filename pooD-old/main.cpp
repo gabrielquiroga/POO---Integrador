@@ -20,7 +20,12 @@ int main(int argc, char *argv[])
 
 
     BaseRobot *base;
-        base = new BaseRobot;
+    base = new BaseRobot;
+
+    //int *datos;
+    //datos = base->leer_comando();
+    //cout << datos[0] <<endl << datos[1] << endl << datos[2] << endl;
+    //delete datos;
 
 
 //        char respuesta;
@@ -91,14 +96,6 @@ int main(int argc, char *argv[])
 //        for (i=0; i<=n; i++) {
 //            cout << informe[i];
 //        }
-
-
-
-
-
-
-
-
 
 
 

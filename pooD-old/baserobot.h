@@ -22,12 +22,15 @@
 using namespace std;
 #include <string>
 #include <sstream>
+#include <fstream>
+#include <cstdlib>
 
 
 
 class BaseRobot : public Conjunto {
     EfectorFinal herramienta;
     Articulacion vinculo[3];
+    fstream archivo;
 
 public:
     string get_estado();
@@ -36,10 +39,12 @@ public:
     void set_IP(string nueva_IP);
     string iniciar_actividad(int accion, int ciclos, float velocidad);
     string toString();
-    string iniciar_movimiento(int tipo_vinc,/* int direccion,*/ float cantidad, float vel_mov);
+    string iniciar_movimiento(int tipo_vinc,/* int direccion,*/ int cantidad, int vel_mov);
     string toString2(int tipo_vinc);
-    void set_vel(int tipo_vinc,float vel);
-    float get_vel(int tipo_vinc);
+    void set_vel(int tipo_vinc,int vel);
+    int get_vel(int tipo_vinc);
+    int **leer_comando(int tam);
+    int get_tam_archivo();
 private:
     string estado;
     string IP;

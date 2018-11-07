@@ -91,20 +91,20 @@ string BaseRobot::toString() {
     return aux;
 }
 
-string BaseRobot::iniciar_movimiento(int tipo_vinc,/* int direccion,*/ float cantidad, float vel_mov) {
+string BaseRobot::iniciar_movimiento(int tipo_vinc,/* int direccion,*/ int cantidad, int vel_mov) {
     string aux;
     string err;
     /*
     if (direccion == 2) {
         cantidad = -cantidad;
     }*/
-    if (tipo_vinc == 1) {
+    if (tipo_vinc == 0) {
         vinculo[tipo_vinc].set_tipoPieza("Vínculo de rotación xy");
     }
-    else if (tipo_vinc == 2) {
+    else if (tipo_vinc == 1) {
         vinculo[tipo_vinc].set_tipoPieza("Vínculo de rotación yz");
     }
-    else if (tipo_vinc == 3) {
+    else if (tipo_vinc == 2) {
         vinculo[tipo_vinc].set_tipoPieza("Vínculo de desplazamiento y");
     }
     if(0==vinculo[tipo_vinc].mover(cantidad, vel_mov, tipo_vinc)){
@@ -116,7 +116,7 @@ string BaseRobot::iniciar_movimiento(int tipo_vinc,/* int direccion,*/ float can
     err="Fuera de los límites";
         return err;
     }
-    }
+}
 string BaseRobot::toString2(int tipo_vinc) {
     
     string aux="INFORME DEL CONJUNTO\nEstado: ";
@@ -136,9 +136,46 @@ string BaseRobot::toString2(int tipo_vinc) {
     return aux;
 }
 
-float BaseRobot::get_vel(int tipo_vinc){
+int BaseRobot::get_vel(int tipo_vinc){
     return vinculo[tipo_vinc].get_velocidad_mov();
 }
-void BaseRobot::set_vel(int tipo_vinc,float vel){
+void BaseRobot::set_vel(int tipo_vinc,int vel){
      vinculo[tipo_vinc].set_velocidad_mov(vel);
+}
+
+int **BaseRobot::leer_comando(int tam){
+    int **datos;
+    int i;
+    datos = new int *[tam];
+    for (int i=0;i<tam;i++) {
+        datos[i] = new int[3];
+    }
+
+    archivo.open("comandos.txt", ios::in);
+    if (archivo.is_open()){
+        for (i=0;i<tam;i++) {
+            archivo >> datos[i][0] >> datos [i][1] >> datos[i][2];
+        }
+        //while( !archivo.eof()) {
+            //archivo >> datos[0] >> datos[1] >> datos[2];
+            //datos[0] = tipo_vinc;  datos[1] = posicion; datos[2] = vel;
+        //
+    }
+    else {
+        cout << "No se encontró el archivo..." << endl;
+    }
+    archivo.close();
+    return datos;
+}
+
+int BaseRobot::get_tam_archivo() {
+    int tam=1;
+    archivo.open("comandos.txt", ios::in);
+    while (!archivo.eof()) {
+        if (archivo.get() == '\n') {
+            tam++;
+        }
+    }
+    archivo.close();
+    return tam;
 }
