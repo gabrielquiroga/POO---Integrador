@@ -45,6 +45,8 @@ public:
     int get_vel(int tipo_vinc);
     int **leer_comando(int tam);
     int get_tam_archivo();
+    void guardar_archivo(int pos1, int pos2, int pos3, int vel1, int vel2, int vel3);
+    void borrar_historial();
 private:
     string estado;
     string IP;

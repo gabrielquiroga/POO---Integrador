@@ -37,7 +37,7 @@ int Articulacion::mover(float posicion, int vel, int tipo_vinc) {
     if (this->posicion_relativa < this->cota_pos[0] || this->posicion_relativa > this->cota_pos[1]) {
         cout << "El movimiento excede alguna de las cotas" << endl;
         err=1;
-        }
+    }
 
     if (this->velocidad_mov > this->cota_vel) {
         cout << "La velocidad excede la cota" << endl;

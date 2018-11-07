@@ -100,6 +100,7 @@ void MainWindow::on_radioButton_toggled(bool checked)
         ui->plainTextEdit->clear();
         ui->plainTextEdit_2->clear();
         ui->plainTextEdit_3->clear();
+        base.borrar_historial();
     }
 }
 
@@ -136,4 +137,18 @@ void MainWindow::on_pushButton_clicked()
         delete datos[i];
     }
     delete datos;
+}
+
+//-------------------pushButton_2----------------------------
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    int pos1, pos2, pos3, vel1, vel2, vel3;
+    pos1 = ui->horizontalSlider->sliderPosition();
+    vel1 = ui->dial->sliderPosition();
+    pos2 = ui->horizontalSlider_2->sliderPosition();
+    vel2 = ui->dial_2->sliderPosition();
+    pos3 = ui->horizontalSlider_3->sliderPosition();
+    vel3 = ui->dial_3->sliderPosition();
+    base.guardar_archivo(pos1, pos2, pos3, vel1, vel2, vel3);
 }

@@ -179,3 +179,23 @@ int BaseRobot::get_tam_archivo() {
     archivo.close();
     return tam;
 }
+
+void BaseRobot::guardar_archivo(int pos1, int pos2, int pos3, int vel1, int vel2, int vel3) {
+    archivo.open("historial.txt", ios::app); //app es para añadir texto al final del archivo
+    if (archivo.is_open()) {
+        string texto;
+        archivo << "0 " << pos1 << " " << vel1 << "\n"
+                << "1 " << pos2 << " " << vel2 << "\n"
+                << "2 " << pos3 << " " << vel3 << "\n\n\n";
+    }
+    else {
+        cout << "No se encontró el archivo..." << endl;
+    }
+    archivo.close();
+}
+
+void BaseRobot::borrar_historial() {
+    archivo.open("historial.txt", ios::out);
+    archivo << "";
+    archivo.close();
+}
