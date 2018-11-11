@@ -275,4 +275,12 @@ void MainWindow::makePlot1(){
     ui->plot1->replot();
 }
 
+//----------------------INGRESO_DE_COMANDOS_POR_QPLAINTEXT--------------------
 
+
+
+
+void MainWindow::on_pushButton_5_toggled(bool checked)
+{
+    ui->plainTextEdit_5->toPlainText();
+}

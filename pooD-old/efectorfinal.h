@@ -14,9 +14,10 @@
 #ifndef EFECTORFINAL_H
 #define EFECTORFINAL_H
 
-#include "conjunto.h"
+#include "Conjunto.h"
 
 #include <string>
+#include <time.h>
 using namespace std;
 
 enum {
@@ -25,29 +26,21 @@ enum {
 
 class EfectorFinal : public Conjunto {
 public:
-    void pintar();
-    void sostener();
-    void soltar();
-    void rotar();
-    void cambiar_velocidad(float nueva_velocidad);
-    void set_velocidad(float nueva_velocidad);
-    float get_velocidad_giro();
     void set_estado(bool nuevo_estado);
     int get_estado();
-    string get_actividad();
-    void set_ciclo_actual(int nuevo_ciclo_actual);
-    int get_ciclo_actual();
-    void aumentar_ciclo();
-    void set_ciclos_prefijados(int ciclos);
-    int get_ciclos_prefijados();  
-               
+    void startVideo();
+    void stopVideo();
+    void foto();
+    int get_numero();
+    void set_numero(int N);
+    double get_dt();
 private:
     bool estado;
-    int ciclo_actual;
-    int ciclos_prefijados;
-    float velocidad_giro;
-    string actividad;  
-    float peso;
+    time_t t0;
+    time_t tf;
+    double dt;
+    int numero;
+
 
 };
 

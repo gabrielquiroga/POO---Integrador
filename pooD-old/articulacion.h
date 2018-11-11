@@ -15,6 +15,7 @@
 #define ARTICULACION_H
 
 #include "Conjunto.h"
+#include <vector>
 
 class Articulacion : public Conjunto {
 public:
@@ -26,12 +27,18 @@ public:
     float get_posicion_relativa();
     void set_velocidad_mov(int nueva_velocidad);
     int get_velocidad_mov();
+    void set_VEL(double vel);
+    vector <double> get_VEL();
+    void set_TIME(double time);
+    vector <double> get_TIME();
 private:
     float posicion_relativa;
     float coordenadas[3];
     int velocidad_mov;
     float cota_pos[2];
     float cota_vel = 50;
+    vector <double> VEL;
+    vector <double> TIME;
     
 
 

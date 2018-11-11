@@ -24,11 +24,12 @@ using namespace std;
 #include <sstream>
 #include <fstream>
 #include <cstdlib>
+#include <vector>
 
 
 
 class BaseRobot : public Conjunto {
-    EfectorFinal herramienta;
+    EfectorFinal camara;
     Articulacion vinculo[3];
     fstream archivo;
 
@@ -43,14 +44,24 @@ public:
     string toString2(int tipo_vinc);
     void set_vel(int tipo_vinc,int vel);
     int get_vel(int tipo_vinc);
-    int **leer_comando(int tam);
+    void leer_comando();
     int get_tam_archivo();
     void guardar_archivo(int pos1, int pos2, int pos3, int vel1, int vel2, int vel3);
     void borrar_historial();
+    vector <string> get_datos();
+    void set_datos(int tam);
+    string foto();
+    void setN(int N);
+    string video(bool on_off);
+    bool get_rec();
+    void set_rec(bool rec);
+    vector<double> get_VEL();
+    vector<double> get_TIME();
 private:
     string estado;
     string IP;
-    
+    vector <string> datos;    //comandos en archivo de texto
+    bool rec=0;
 };
 
 #endif /* BASEROBOT_H */

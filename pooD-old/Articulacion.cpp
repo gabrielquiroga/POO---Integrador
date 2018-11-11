@@ -57,3 +57,15 @@ void Articulacion::set_velocidad_mov(int nueva_velocidad) {
 int Articulacion::get_velocidad_mov() {
     return this->velocidad_mov;
 }
+void Articulacion::set_VEL(double vel) {
+    this->VEL.push_back(vel);
+}
+void Articulacion::set_TIME(double time) {
+    this->TIME.push_back(time);
+}
+vector<double> Articulacion::get_VEL() {
+    return this->VEL;
+}
+vector<double> Articulacion::get_TIME() {
+    return this->TIME;
+}

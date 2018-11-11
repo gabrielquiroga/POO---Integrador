@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = pooD
 TEMPLATE = app
@@ -31,7 +31,8 @@ SOURCES += \
     baserobot.cpp \
     Conjunto.cpp \
     EfectorFinal.cpp \
-    Eslabon.cpp
+    Eslabon.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,7 +41,8 @@ HEADERS += \
     Conjunto.h \
     efectorfinal.h \
     eslabon.h \
-    mainwindow.h
+    mainwindow.h \
+    qcustomplot.h
 
 FORMS += \
         mainwindow.ui
